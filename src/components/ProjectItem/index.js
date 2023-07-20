@@ -1,13 +1,13 @@
-import {Li, ProjectImg, ProjectName} from './styledComponents'
+import './index.css'
 
 const ProjectItem = props => {
   const {projectDetails} = props
   const {name, imageUrl} = projectDetails
   return (
-    <Li>
-      <ProjectImg src={imageUrl} alt={name} />
-      <ProjectName>{name}</ProjectName>
-    </Li>
+    <li className="list-item">
+      <img className="project-img" src={imageUrl} alt={name} />
+      <p className="project-name">{name}</p>
+    </li>
   )
 }
 

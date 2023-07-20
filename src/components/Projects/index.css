@@ -1,20 +1,18 @@
-import styled from 'styled-components'
-
-export const MainBg = styled.div`
+.main-bg {
   min-height: 100vh;
-`
-export const Nav = styled.nav`
+}
+nav {
   padding: 10px;
   background-color: #f1f5f9;
-`
-export const ContentDiv = styled.div`
+}
+.content-div {
   padding-top: 30px;
-`
-export const Logo = styled.img`
+}
+.logo {
   height: 36px;
   margin-left: 40px;
-`
-export const Select = styled.select`
+}
+select {
   margin-left: 50px;
   height: 33px;
   width: 40%;
@@ -27,42 +25,42 @@ export const Select = styled.select`
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 40px;
-`
-export const Option = styled.option``
-export const LoaderDiv = styled.div`
+}
+.loader-div {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 200px;
-`
-export const FailureDiv = styled.div`
+}
+.failure-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-export const FailureImg = styled.img`
+}
+.failure-img {
   width: 30%;
-`
-export const FailureHeading = styled.h1`
-  font-size: 20px;
+  margin-top: 30px;
+}
+.failure-head {
+  font-size: 30px;
   color: #475569;
-`
-export const FailurePara = styled.p`
-  font-size: 13px;
-  color: #cbd5e1;
-`
-export const RetryButton = styled.button`
+}
+.failure-para {
+  font-size: 18px;
+  color: #475569;
+}
+.retry-button {
   background-color: #328af2;
   border: none;
   border-radius: 3px;
   height: 27px;
   width: 70px;
   color: #ffffff;
-  font-size: 10px;
-`
-export const Ul = styled.ul`
+  font-size: 12px;
+}
+ul {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-`
+}

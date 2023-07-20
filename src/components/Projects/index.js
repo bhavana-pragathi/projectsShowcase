@@ -1,20 +1,7 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import ProjectItem from '../ProjectItem'
-import {
-  MainBg,
-  Nav,
-  Logo,
-  Select,
-  Option,
-  ContentDiv,
-  LoaderDiv,
-  FailureDiv,
-  FailureImg,
-  FailureHeading,
-  FailurePara,
-  Ul,
-} from './styledComponents'
+import './index.css'
 
 const categoriesList = [
   {id: 'ALL', displayText: 'All'},
@@ -35,7 +22,7 @@ class Projects extends Component {
   state = {
     projectData: [],
     apiStatus: apiConstants.initial,
-    selectOption: categoriesList[0].id,
+    selectOption: 'ALL',
   }
 
   componentDidMount() {
@@ -64,34 +51,42 @@ class Projects extends Component {
   }
 
   renderInProgressView = () => (
-    <LoaderDiv data-testid="loader">
+    <div className="loader-div" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
-    </LoaderDiv>
+    </div>
   )
 
   renderSuccessView = () => {
     const {projectData} = this.state
     return (
-      <Ul>
+      <ul>
         {projectData.map(eachProject => (
           <ProjectItem key={eachProject.id} projectDetails={eachProject} />
         ))}
-      </Ul>
+      </ul>
     )
   }
 
   renderFailureView = () => (
-    <FailureDiv>
-      <FailureImg
+    <div className="failure-div">
+      <img
+        className="failure-img"
         src="https://assets.ccbp.in/frontend/react-js/projects-showcase/failure-img.png"
         alt="failure view"
       />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailurePara>
-        We cannot see to find the page you are looking for
-      </FailurePara>
-    </FailureDiv>
+      <h1 className="failure-head">Oops! Something Went Wrong</h1>
+      <p className="failure-para">
+        We cannot seem to find the page you are looking for
+      </p>
+      <button type="button" className="retry-button" onClick={this.onRetry}>
+        Retry
+      </button>
+    </div>
   )
+
+  onRetry = () => {
+    this.getProjects()
+  }
 
   renderProjects = () => {
     const {apiStatus} = this.state
@@ -114,22 +109,25 @@ class Projects extends Component {
   render() {
     const {selectOption} = this.state
     return (
-      <MainBg>
-        <Nav>
-          <Logo
+      <div className="main-bg">
+        <nav>
+          <img
+            className="logo"
             src="https://assets.ccbp.in/frontend/react-js/projects-showcase/website-logo-img.png"
             alt="website logo"
           />
-        </Nav>
-        <ContentDiv>
-          <Select value={selectOption} onChange={this.onSelect}>
+        </nav>
+        <div className="content-div">
+          <select value={selectOption} onChange={this.onSelect}>
             {categoriesList.map(eachOption => (
-              <Option key={eachOption.id}>{eachOption.displayText}</Option>
+              <option value={eachOption.id} key={eachOption.id}>
+                {eachOption.displayText}
+              </option>
             ))}
-          </Select>
+          </select>
           {this.renderProjects()}
-        </ContentDiv>
-      </MainBg>
+        </div>
+      </div>
     )
   }
 }
